@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label name:</strong>
+  <%= @datetime.label_name %>
+</p>
+
+<p>
+  <strong>Required field:</strong>
+  <%= @datetime.required_field %>
+</p>
+
+<p>
+  <strong>Half width:</strong>
+  <%= @datetime.half_width %>
+</p>
+
+<p>
+  <strong>Display type:</strong>
+  <%= @datetime.display_type %>
+</p>
+
+<p>
+  <strong>Date format:</strong>
+  <%= @datetime.date_format %>
+</p>
+
+<p>
+  <strong>Time type:</strong>
+  <%= @datetime.time_type %>
+</p>
+
+<%= link_to 'Edit', edit_datetime_path(@datetime) %> |
+<%= link_to 'Back', datetimes_path %>

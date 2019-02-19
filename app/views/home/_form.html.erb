@@ -1,0 +1,31 @@
+<br>
+<div ng-app="formHome">
+  <div ng-controller="HomeController">
+    <div class="row">
+      <div class="col-md-8">
+        <div>
+          <form>
+            <div class="form-group">
+              <div ng-repeat= "input in result.inputs">
+                <label>{{input.label_name}}</label>
+                <input type="text" class="form-control" placeholder="Text" />
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>

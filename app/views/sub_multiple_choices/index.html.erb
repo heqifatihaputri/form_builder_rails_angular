@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sub Multiple Choices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Choice name</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sub_multiple_choices.each do |sub_multiple_choice| %>
+      <tr>
+        <td><%= sub_multiple_choice.choice_name %></td>
+        <td><%= sub_multiple_choice.price %></td>
+        <td><%= link_to 'Show', sub_multiple_choice %></td>
+        <td><%= link_to 'Edit', edit_sub_multiple_choice_path(sub_multiple_choice) %></td>
+        <td><%= link_to 'Destroy', sub_multiple_choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sub Multiple Choice', new_sub_multiple_choice_path %>

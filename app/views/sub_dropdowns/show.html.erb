@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Choice name:</strong>
+  <%= @sub_dropdown.choice_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @sub_dropdown.price %>
+</p>
+
+<%= link_to 'Edit', edit_sub_dropdown_path(@sub_dropdown) %> |
+<%= link_to 'Back', sub_dropdowns_path %>

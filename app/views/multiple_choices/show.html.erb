@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label name:</strong>
+  <%= @multiple_choice.label_name %>
+</p>
+
+<p>
+  <strong>Required field:</strong>
+  <%= @multiple_choice.required_field %>
+</p>
+
+<p>
+  <strong>Half width:</strong>
+  <%= @multiple_choice.half_width %>
+</p>
+
+<p>
+  <strong>Alignment:</strong>
+  <%= @multiple_choice.alignment %>
+</p>
+
+<%= link_to 'Edit', edit_multiple_choice_path(@multiple_choice) %> |
+<%= link_to 'Back', multiple_choices_path %>

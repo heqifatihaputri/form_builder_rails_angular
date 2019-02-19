@@ -1,0 +1,2 @@
+class SubDropdown < ApplicationRecord
+end

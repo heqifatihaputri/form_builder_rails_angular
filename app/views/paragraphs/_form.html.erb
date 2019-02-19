@@ -1,0 +1,47 @@
+<div ng-app="formParagraph">
+  <div ng-controller="ParagraphController">
+    <div class="row">
+      <div class="col-md-8">
+        <form ng-submit="addParagraph()">
+          <div class="form-group">
+            <input type="text" class="form-control" name="label_name" ng-model="newParagraph.label_name" placeholder="Text" />
+              <br><b>Label name : </b>{{newParagraph.label_name}}
+          </div>
+          <div class="form-group">
+            <label>Require Field</label>
+            <input type="checkbox" name="required_field" ng-model="newParagraph.required_field">
+            <p>{{newParagraph.required_field}}</p>
+          </div>
+          <div class="form-group">
+            <label>Half Width</label>
+            <input type="checkbox" name="half_width" ng-model="newParagraph.half_width">
+            <p>{{newParagraph.half_width}}</p>
+          </div>
+          <div class="form-group">
+            <label>Limit Char</label>
+            <input type="checkbox" name="limit_char" ng-model="newParagraph.limit_char">
+            <p>{{newParagraph.limit_char}}</p>
+          </div>
+          <div class="form-group">
+            <label>Input Height</label>
+            <input type="text" class="form-control slider" name="input_height" ng-model="newParagraph.input_height" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after"data-slider-tooltip="hide">
+            <p>{{newParagraph.input_height}}</p>
+          </div>
+            <rzslider rz-slider-model="newParagraph.input_height"></rzslider>
+          <br>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>

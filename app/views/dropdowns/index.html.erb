@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dropdowns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label name</th>
+      <th>Required field</th>
+      <th>Half width</th>
+      <th>Answer public</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dropdowns.each do |dropdown| %>
+      <tr>
+        <td><%= dropdown.label_name %></td>
+        <td><%= dropdown.required_field %></td>
+        <td><%= dropdown.half_width %></td>
+        <td><%= dropdown.answer_public %></td>
+        <td><%= link_to 'Show', dropdown %></td>
+        <td><%= link_to 'Edit', edit_dropdown_path(dropdown) %></td>
+        <td><%= link_to 'Destroy', dropdown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dropdown', new_dropdown_path %>

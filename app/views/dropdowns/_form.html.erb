@@ -1,0 +1,36 @@
+<div ng-app="formDropdown">
+  <div ng-controller="DropdownController">
+    <div class="row">
+      <div class="col-md-8">
+        <form ng-submit="addDropdown()">
+          <div class="form-group">
+            <input type="text" class="form-control" name="label_name" ng-model="newDropdown.label_name" placeholder="Dropdown" />
+              <br><b>Label name : </b>{{newDropdown.label_name}}
+          </div>
+          <div class="form-group">
+            <label>Require Field</label>
+            <input type="checkbox" name="required_field" ng-model="newDropdown.required_field">
+            <p>{{newDropdown.required_field}}</p>
+          </div>
+          <div class="form-group">
+            <label>Half Width</label>
+            <input type="checkbox" name="half_width" ng-model="newDropdown.half_width">
+            <p>{{newDropdown.half_width}}</p>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>

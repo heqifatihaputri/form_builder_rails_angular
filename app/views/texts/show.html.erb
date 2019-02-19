@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label name:</strong>
+  <%= @text.label_name %>
+</p>
+
+<p>
+  <strong>Required field:</strong>
+  <%= @text.required_field %>
+</p>
+
+<p>
+  <strong>Half width:</strong>
+  <%= @text.half_width %>
+</p>
+
+<%= link_to 'Edit', edit_text_path(@text) %> |
+<%= link_to 'Back', texts_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multiple Choices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label name</th>
+      <th>Required field</th>
+      <th>Half width</th>
+      <th>Alignment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multiple_choices.each do |multiple_choice| %>
+      <tr>
+        <td><%= multiple_choice.label_name %></td>
+        <td><%= multiple_choice.required_field %></td>
+        <td><%= multiple_choice.half_width %></td>
+        <td><%= multiple_choice.alignment %></td>
+        <td><%= link_to 'Show', multiple_choice %></td>
+        <td><%= link_to 'Edit', edit_multiple_choice_path(multiple_choice) %></td>
+        <td><%= link_to 'Destroy', multiple_choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multiple Choice', new_multiple_choice_path %>

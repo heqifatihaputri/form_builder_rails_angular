@@ -1,0 +1,31 @@
+<div ng-app="formSubMultipleChoice">
+  <div ng-controller="SubMultipleChoiceController">
+    <div class="row">
+      <div class="col-md-8">
+        <formng-submit="addSubMultipleChoice()">
+          <div class="form-group">
+            <input type="text" class="form-control" name="choice_name" ng-model="newSubMultipleChoice.choice_name" placeholder="Choice Name" />
+              <br><b>Choice name : </b>{{newSubMultipleChoice.choice_name}}
+          </div>
+          <div class="form-group">
+            <label>Price : </label>
+            <input type="text" class="form-control" name="price" ng-model="newSubMultipleChoice.price">
+              <br><b>Price : </b>{{newSubMultipleChoice.price}}
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>

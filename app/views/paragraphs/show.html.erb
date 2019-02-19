@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label name:</strong>
+  <%= @paragraph.label_name %>
+</p>
+
+<p>
+  <strong>Required field:</strong>
+  <%= @paragraph.required_field %>
+</p>
+
+<p>
+  <strong>Half width:</strong>
+  <%= @paragraph.half_width %>
+</p>
+
+<p>
+  <strong>Limit char:</strong>
+  <%= @paragraph.limit_char %>
+</p>
+
+<p>
+  <strong>Input height:</strong>
+  <%= @paragraph.input_height %>
+</p>
+
+<%= link_to 'Edit', edit_paragraph_path(@paragraph) %> |
+<%= link_to 'Back', paragraphs_path %>

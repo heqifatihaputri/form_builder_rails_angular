@@ -1,0 +1,2 @@
+class SubMultipleChoice < ApplicationRecord
+end

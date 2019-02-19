@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Paragraphs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label name</th>
+      <th>Required field</th>
+      <th>Half width</th>
+      <th>Limit char</th>
+      <th>Input height</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paragraphs.each do |paragraph| %>
+      <tr>
+        <td><%= paragraph.label_name %></td>
+        <td><%= paragraph.required_field %></td>
+        <td><%= paragraph.half_width %></td>
+        <td><%= paragraph.limit_char %></td>
+        <td><%= paragraph.input_height %></td>
+        <td><%= link_to 'Show', paragraph %></td>
+        <td><%= link_to 'Edit', edit_paragraph_path(paragraph) %></td>
+        <td><%= link_to 'Destroy', paragraph, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Paragraph', new_paragraph_path %>

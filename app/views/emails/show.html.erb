@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label name:</strong>
+  <%= @email.label_name %>
+</p>
+
+<p>
+  <strong>Required field:</strong>
+  <%= @email.required_field %>
+</p>
+
+<p>
+  <strong>Half width:</strong>
+  <%= @email.half_width %>
+</p>
+
+<p>
+  <strong>Mailchimp:</strong>
+  <%= @email.mailchimp %>
+</p>
+
+<%= link_to 'Edit', edit_email_path(@email) %> |
+<%= link_to 'Back', emails_path %>

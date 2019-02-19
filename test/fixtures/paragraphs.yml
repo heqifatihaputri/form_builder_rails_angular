@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label_name: MyString
+  required_field: false
+  half_width: false
+  limit_char: false
+  input_height: MyString
+
+two:
+  label_name: MyString
+  required_field: false
+  half_width: false
+  limit_char: false
+  input_height: MyString
