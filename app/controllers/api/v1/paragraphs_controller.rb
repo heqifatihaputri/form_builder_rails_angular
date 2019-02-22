@@ -1,10 +1,15 @@
 module Api::V1
 	class ParagraphsController < ApplicationController
-	  respond_to :json
+		before_action :set_paragraph, only: [:show]
+	  # respond_to :json
 
 	  def index
-	  	@paragraph = Paragraph.all
-	  	render json: { paragraph: @paragraph }
+	  	@paragraphs = Paragraph.all
+	  	render json: @paragraphs, each_serializer: ParagraphSerializer
+	  end
+
+	  def show
+	  	render json: @paragraph, each_serializer: ParagraphSerializer	  	
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_paragraph
+      @paragraph = Paragraph.find(params[:id])
+    end
 
 		def paragraph_params
 		  params.require(:paragraph).permit(:label_name, :required_field, :half_width, :limit_char, :input_height)

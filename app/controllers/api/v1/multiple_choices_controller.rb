@@ -1,10 +1,15 @@
 module Api::V1
 	class MultipleChoicesController < ApplicationController
-	  respond_to :json
+		before_action :set_multiple_choice, only: [:show]
+	  # respond_to :json
 
 	  def index
 	  	@multiple_choices = MultipleChoice.all
-	  	render json: { multiple_choices: @multiple_choices }
+	  	render json: @multiple_choices, each_serializer: MultipleChoiceSerializer
+	  end
+
+	  def show
+	  	render json: @multiple_choice, each_serializer: MultipleChoiceSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_multiple_choice
+      @multiple_choice = MultipleChoice.find(params[:id])
+    end
 
 		def multiple_choice_params
 		  params.require(:multiple_choice).permit(:label_name, :required_field, :half_width)

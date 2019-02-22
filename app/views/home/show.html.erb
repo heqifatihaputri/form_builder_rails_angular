@@ -1,0 +1,33 @@
+<!-- <br>
+<div ng-app="formHome">
+  <div ng-controller="HomeController">
+    <div class="row">
+      <div class="col-md-8">
+        <ul>
+          <li ng-repeat="input in result.inputs">
+            {{input.inputable_type}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+<br>
+<h4>Content</h4>
+<%= link_to "Title, Description & Button", edit_content_path(@content) %>
+
+<p>
+  <h4>Element</h4>
+    <% @inputs.each do |input| %>
+      <ul>
+        <li style="font-size: 18px;">
+          <%= input.inputable_type %>
+        </li>
+      </ul>
+    <% end %>
+</p>
+
+<%= link_to 'Add Element', form_input_elements_path(@form) %>
+
+<br>
+<br>

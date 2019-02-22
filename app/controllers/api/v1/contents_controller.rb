@@ -1,10 +1,15 @@
 module Api::V1
 	class ContentsController < ApplicationController
-	  respond_to :json
+	  # respond_to :json
+	  before_action :set_content, only: [:show]
 
 	  def index
 	  	@contents = Content.all
-	  	render json: { contents: @contents }
+	  	render json: @contents, each_serializer: ContentSerializer
+	  end
+
+	  def show
+	  	render json: @content, each_serializer: ContentSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_content
+      @content = Content.find(params[:id])
+    end
 
 		def content_params
 		  params.require(:content).permit(:title, :description, :button_text)

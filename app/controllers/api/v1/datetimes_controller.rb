@@ -1,10 +1,15 @@
 module Api::V1
 	class DatetimesController < ApplicationController
-	  respond_to :json
+	  # respond_to :json
+	  before_action :set_datetime, only: [:show]
 
 	  def index
 	  	@datetimes = Datetime.all
-	  	render json: { datetimes: @datetimes }
+	  	render json: @datetimes, each_serializer: DatetimeSerializer
+	  end
+
+	  def show
+	  	render json: @datetime, each_serializer: DatetimeSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_datetime
+      @datetime = Datetime.find(params[:id])
+    end
 
 		def datetime_params
 		  params.require(:datetime).permit(:label_name, :required_field, :half_width, :display_type, :date_format, :time_type)

@@ -1,10 +1,15 @@
 module Api::V1
 	class DropdownsController < ApplicationController
-	  respond_to :json
+		before_action :set_dropdown, only: [:show]
+	  # respond_to :json
 
 	  def index
 	  	@dropdowns = Dropdown.all
-	  	render json: { dropdowns: @dropdowns }
+	  	render json: @dropdowns, each_serializer: DropdownSerializer
+	  end
+
+	  def show
+	  	render json: @dropdown, each_serializer: DropdownSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_dropdown
+      @dropdown = Dropdown.find(params[:id])
+    end
 
 		def dropdown_params
 		  params.require(:dropdown).permit(:label_name, :required_field, :half_width)

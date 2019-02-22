@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_081848) do
+ActiveRecord::Schema.define(version: 2019_02_21_065704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_081848) do
     t.string "button_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "form_id"
   end
 
   create_table "datetimes", force: :cascade do |t|
@@ -43,6 +44,15 @@ ActiveRecord::Schema.define(version: 2019_02_12_081848) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "elements", force: :cascade do |t|
+    t.integer "form_id"
+    t.string "inputable_type"
+    t.bigint "inputable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inputable_type", "inputable_id"], name: "index_elements_on_inputable_type_and_inputable_id"
+  end
+
   create_table "emails", force: :cascade do |t|
     t.string "label_name"
     t.boolean "required_field"
@@ -50,6 +60,12 @@ ActiveRecord::Schema.define(version: 2019_02_12_081848) do
     t.boolean "mailchimp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "multiple_choices", force: :cascade do |t|

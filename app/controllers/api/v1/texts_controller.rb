@@ -1,12 +1,18 @@
 module Api::V1
 	class TextsController < ApplicationController
-	  respond_to :json
+		before_action :set_text, only: [:show]
+	  # respond_to :json
 
 	  def index
 	  	@texts = Text.all
-	  	render json: { texts: @texts }
+	  	render json: @texts, each_serializer: TextSerializer
 	    # respond_with Text.all
 	  end
+
+
+		def show
+			render json: @text, each_serializer: TextSerializer
+		end
 
 	  def new
 	  	@text = Text.new
@@ -31,6 +37,10 @@ module Api::V1
 		# end
 
 		private
+
+		def set_text
+			@text = Text.find(params[:id])
+		end
 
 		def text_params
 		  params.require(:text).permit(:label_name, :required_field, :half_width)

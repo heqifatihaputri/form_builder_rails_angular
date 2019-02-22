@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  resources :elements
+  resources :forms do
+    resources :input_elements, only: [:index, :new] do
+      get :input_text, on: :collection
+      get :input_email, on: :collection
+      get :input_paragraph, on: :collection
+      get :input_dropdown, on: :collection
+      get :input_sub_dropdown, on: :collection
+      get :input_multiple_choice, on: :collection
+      get :input_sub_multiple_choice, on: :collection
+      get :input_datetime, on: :collection
+    end
+  end
+  root 'forms#index'
   resources :datetimes
   resources :sub_multiple_choices
   resources :multiple_choices
@@ -9,19 +22,22 @@ Rails.application.routes.draw do
   resources :emails
   resources :texts
   resources :contents
+  resources :home, only: [:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      resources :texts, only: [:index, :create, :update]
-      resources :emails, only: [:index, :create, :update]
-      resources :paragraphs, only: [:index, :create, :update]
-      resources :dropdowns, only: [:index, :create, :update]
-      resources :sub_dropdowns, only: [:index, :create, :update]
-      resources :multiple_choices, only: [:index, :create, :update]
-      resources :sub_multiple_choices, only: [:index, :create, :update]
-      resources :datetimes, only: [:index, :create, :update]
-      resources :contents, only: [:index, :create, :update]
-      resources :home, only: [:index]
+      resources :texts, only: [:index, :create, :update, :show]
+      resources :emails, only: [:index, :create, :update, :show]
+      resources :paragraphs, only: [:index, :create, :update, :show]
+      resources :dropdowns, only: [:index, :create, :update, :show]
+      resources :sub_dropdowns, only: [:index, :create, :update, :show]
+      resources :multiple_choices, only: [:index, :create, :update, :show]
+      resources :sub_multiple_choices, only: [:index, :create, :update, :show]
+      resources :datetimes, only: [:index, :create, :update, :show]
+      resources :contents, only: [:index, :create, :update, :show]
+      resources :home, only: [:index, :show]
+      resources :forms, only: [:index]
+      resources :elements
     end
   end
 end

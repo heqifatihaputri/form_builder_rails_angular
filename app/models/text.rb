@@ -1,3 +1,3 @@
 class Text < ApplicationRecord
-	# validates :label_name, presence: true
+	has_one :element, as: :inputable
 end

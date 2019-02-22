@@ -1,6 +1,8 @@
 module Api::V1
 	class HomeController < ApplicationController
 		respond_to :json
+
+		before_action :set_form, only: [:show, :show_content]
 		
 		def index
 			@texts = Text.all
@@ -14,7 +16,23 @@ module Api::V1
 
 	  	@inputs = @texts + @emails + @paragraphs + @dropdowns + @sub_dropdowns + @multiple_choices + @sub_multiple_choices + @datetimes
 	  	# debugger
-	  	render json: { inputs: @inputs }
+	  	render json: { inputs: @inputs }, each_serializer: HomeSerializer
+	  	# render json: @inputs, each_serializer: HomeSerializer
+		end
+
+		def show
+			@inputs = @form.elements
+			render json: @inputs, each_serializer: ElementSerializer
+		end
+
+		def show_content
+			@content = @form.content
+		end
+
+		private
+
+		def set_form
+			@form = Form.find(params[:id])
 		end
 	end
 end

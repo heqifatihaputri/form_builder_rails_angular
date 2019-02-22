@@ -1,10 +1,15 @@
 module Api::V1
 	class SubMultipleChoicesController < ApplicationController
+		before_action :set_sub_multiple_choice, only: [:show]
 	  respond_to :json
 
 	  def index
 	  	@sub_multiple_choices = SubMultipleChoice.all
-	  	render json: { sub_multiple_choices: @sub_multiple_choices }
+	  	render json: @sub_multiple_choices, each_serializer: SubMultipleChoiceSerializer
+	  end
+
+	  def show
+	  	render json: @sub_multiple_choice, each_serializer: SubMultipleChoiceSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_sub_multiple_choice
+      @sub_multiple_choice = SubMultipleChoice.find(params[:id])
+    end
 
 		def sub_multiple_choice_params
 		  params.require(:sub_multiple_choice).permit(:choice_name, :price)

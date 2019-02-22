@@ -1,10 +1,15 @@
 module Api::V1
 	class SubDropdownsController < ApplicationController
-	  respond_to :json
+		before_action :set_sub_dropdown, only: [:show]
+	  # respond_to :json
 
 	  def index
 	  	@sub_dropdowns = SubDropdown.all
-	  	render json: { sub_dropdowns: @sub_dropdowns }
+	  	render json: @sub_dropdowns, each_serializer: SubDropdownSerializer
+	  end
+
+	  def show
+	  	render json: @sub_dropdown, each_serializer: SubDropdownSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_sub_dropdown
+      @sub_dropdown = SubDropdown.find(params[:id])
+    end
 
 		def sub_dropdown_params
 		  params.require(:sub_dropdown).permit(:choice_name, :price)

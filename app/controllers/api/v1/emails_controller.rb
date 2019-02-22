@@ -1,10 +1,15 @@
 module Api::V1
 	class EmailsController < ApplicationController
-	  respond_to :json
+	  before_action :set_email, only: [:show]
+	  # respond_to :json
 
 	  def index
 	  	@emails = Email.all
-	  	render json: { emails: @emails }
+	  	render json: @emails, each_serializer: EmailSerializer
+	  end
+
+	  def show
+	  	render json: @email, each_serializer: EmailSerializer
 	  end
 
 	  def new
@@ -21,6 +26,10 @@ module Api::V1
 		end
 
 		private
+
+		def set_email
+      @email = Email.find(params[:id])
+    end
 
 		def email_params
 		  params.require(:email).permit(:label_name, :required_field, :half_width)
